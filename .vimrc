@@ -17,15 +17,22 @@ autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\s\+$/
 highlight EOLWS ctermbg=red guibg=red
 
 " UI tweaks
-syntax on               " enable syntax highlighting
-set t_Co=256            " use 256 colors instead of default 16
-set background=light    " use default highlight colors for light background
-set showmatch           " highlight matching [{()}]
-set scrolloff=10        " keep the cursor centered when scrolling 
-set visualbell          " use visual bell instead of beeping
-set t_vb=               " disable visual bell, so no beep or flash
-set colorcolumn=80      " visually indicate column 80
-set lazyredraw          " only redraw when necessary
+syntax on                   " enable syntax highlighting
+set t_Co=256                " use 256 colors instead of default 16
+set number                  " show line numbers
+set background=light        " use default highlight colors for light background
+set showmatch               " highlight matching [{()}]
+set scrolloff=10            " keep the cursor centered when scrolling 
+set visualbell              " use visual bell instead of beeping
+set t_vb=                   " disable visual bell, so no beep or flash
+if exists('+colorcolumn')
+    highlight ColorColumn ctermbg=gray
+    set colorcolumn=80      " visually indicate column 80 if ver >= 7.3
+else                        " otherwise highlight overlength lines red
+    highlight Overlength ctermbg=red ctermfg=white guibg=red
+    match Overlength /\%81v.\+/
+endif
+set lazyredraw              " only redraw when necessary
 
 " Shortcuts & rebinds
 " saves session, restore with vim -S
