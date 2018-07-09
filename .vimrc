@@ -18,10 +18,13 @@ set t_Co=256                " use 256 colors instead of default 16
 set number                  " show line numbers
 set background=light        " use default highlight colors for light background
 set showmatch               " highlight matching [{()}]
+set hlsearch                " highlight search matches
+set smartcase               " searching in all one case is case insensitive
 set scrolloff=10            " keep the cursor centered when scrolling 
 set visualbell              " use visual bell instead of beeping
 set t_vb=                   " disable visual bell, so no beep or flash
 set lazyredraw              " only redraw when necessary
+set mouse=a                 " enables scrolling and cursor placement with mouse
 
 " Column 80 marker
 if exists('+colorcolumn')
@@ -38,11 +41,34 @@ autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\s\+$/
 highlight EOLWS ctermbg=red guibg=red
 
 " Shortcuts & rebinds
-" --saves session, restore with vim -S
-nnoremap <leader>w :mksession<CR>
 " --allows saving with W when you inevitably forgot to run vim with sudo
 command W w !sudo tee >/dev/null %
 " --allows use of ; as : to save a shift press in command mode
 nore ; : 
-" --binds F2 to toggle paste mode on and off
+
+" F1 opens Vim help by default
+" ----------------------------
+" F2 toggles paste mode on/off
 set pastetoggle=<F2>
+" F3 toggles mouse on/off
+map <F3> :exec &mouse!="" ? "set mouse=" : "set mouse=a"<CR>
+" F4 ---------------------
+" ------------------------
+
+" F5 saves the session to be restored later with vim -S
+map <F5> :mksession<CR>
+" F6 toggles line numbers on/off
+map <F6> :set number!<CR>
+" F7 toggles relative line numbers
+map <F7> :set relativenumber!<CR>
+" F8 clears highlighting
+map <F8> :noh<CR>
+
+" F9 ---------------------
+" ------------------------
+" F10 --------------------
+" ------------------------
+" F11 --------------------
+" ------------------------
+" F12 --------------------
+" ------------------------
