@@ -5,16 +5,16 @@ case "$TERM" in
     xterm-color) color_prompt=yes;;
 esac
 
+force_color_prompt=yes
+
 # construct prompt script 1
 source ~/.git-prompt.sh
 branch='\[\033[0;33m\]$(__git_ps1 "(%s) \r\f")'; # orange
-user="\[\033[0;32m\]\u"; # green
+user="\[\033[1;35m\]\u"; # light magenta
 host="\[\033[0;34m\]\h"; # blue
-working="\[\033[1;35m\]\w"; # light magenta
+working="\[\033[0;32m\]\w"; # green
 
 PS1=${branch}${user}"\[\033[0;39m\]@"${host}"\[\033[0;39m\]:"${working}" \[\033[0m\]$ "
-
-force_color_prompt=yes
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
