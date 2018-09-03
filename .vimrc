@@ -14,13 +14,10 @@ highlight EOLWS ctermbg=red guibg=red
 " Indentation settings --------------------------------------------------------
 set shiftwidth=4  " sets width for reindent and autoindent
 set autoindent    " autoindents to same indentation as previous line
-" Filetype-specific indentation overrides
-autocmd Filetype html setlocal tabstop=2 shiftwidth=2
-autocmd Filetype css setlocal tabstop=2 shiftwidth=2
+filetype plugin indent on   "indent config files at ~/.vim/after/ftplugin
 
 " UI Tweaks -------------------------------------------------------------------
 syntax on                   " enable syntax highlighting
-filetype on                 " enable file type detection " possibly redundant
 set t_Co=256                " use 256 colors instead of default 16
 set number                  " show line numbers
 set background=light        " use default highlight colors for light background
