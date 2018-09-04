@@ -67,17 +67,17 @@ map <F3> :exec &mouse!="" ? "set mouse=" : "set mouse=a"<CR>
 
 " F5 saves the session to be restored later with vim -S
 map <F5> :mksession<CR>
-" F6 toggles line numbers on/off
-map <F6> :set number!<CR>
-" F7 toggles relative line numbers
-map <F7> :set relativenumber!<CR>
+" F6 ---------------------
+" ------------------------
+" F7 toggles spell-check
+map <F7> :set spell! spelllang=en_us<CR>
 " F8 clears highlighting
 map <F8> :noh<CR>
 
-" F9 ---------------------
-" ------------------------
-" F10 --------------------
-" ------------------------
+" F9 toggles line numbers on/off
+map <F9> :set number!<CR>
+" F10 toggles relative line numbers
+map <F10> :set relativenumber!<CR>
 " F11 --------------------
 " ------------------------
 " F12 --------------------
