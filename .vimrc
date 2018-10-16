@@ -31,6 +31,7 @@ set visualbell              " use visual bell instead of beeping
 set t_vb=                   " disable visual bell, so no beep or flash
 set lazyredraw              " only redraw when necessary, for colorcolumn
 set mouse=a                 " enables scrolling and cursor placement with mouse
+set laststatus=2            " shows file name at bottom of window
 
 " Column 80 marker
 if exists('+colorcolumn')
