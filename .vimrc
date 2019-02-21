@@ -31,16 +31,11 @@ set visualbell              " use visual bell instead of beeping
 set t_vb=                   " disable visual bell, so no beep or flash
 set lazyredraw              " only redraw when necessary, for colorcolumn
 set mouse=a                 " enables scrolling and cursor placement with mouse
-set laststatus=2            " shows file name at bottom of window
 
 " Column 80 marker
-if exists('+colorcolumn')
-    highlight ColorColumn ctermbg=gray
-    set colorcolumn=80      " visually indicate column 80 if ver >= 7.3
-else                        " otherwise highlight overlength lines red
-    highlight Overlength ctermbg=blue ctermfg=white guibg=blue
-    match Overlength /\%81v.\+/
-endif
+"if exists('+colorcolumn')
+"    highlight ColorColumn ctermbg=gray
+"    set colorcolumn=80      " visually indicate column 80 if ver >= 7.3
 
 " Shortcuts & rebinds
 " --allows saving with W when you inevitably forgot to run vim with sudo
