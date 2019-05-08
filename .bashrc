@@ -1,11 +1,8 @@
 # Personal Bash config
 
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color) color_prompt=yes;;
-esac
-
 force_color_prompt=yes
+
+source .bashrc_local
 
 # construct prompt script 1
 source ~/.git-prompt.sh
@@ -29,6 +26,16 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -halF'
 alias la='ls -A'
 alias l='ls -CF'
+
+eval $(thefuck --alias)
+
+# Make SSH_AUTH_SOCK persistant for tmux & screen so that new 
+# SSH agents created by subsequent logons are still usable
+_ssh_auth_save() {
+    ln -sf "$SSH_AUTH_SOCK" "$HOME/.ssh/ssh-auth-sock.$HOSTNAME"
+}
+alias screen='_ssh_auth_save ; export HOSTNAME=$(hostname) ; screen'
+alias tmux='_ssh_auth_save ; export HOSTNAME=$(hostname) ; tmux'
