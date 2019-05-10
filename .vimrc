@@ -32,12 +32,22 @@ set t_vb=                   " disable visual bell, so no beep or flash
 set lazyredraw              " only redraw when necessary, for colorcolumn
 set mouse=a                 " enables scrolling and cursor placement with mouse
 
+" Statusline settings
+set laststatus=2
+set statusline=%F               " displays file name
+set statusline+=%10((%l,%c)%)\  " displays line & column numbers
+
 " Column 80 marker
 "if exists('+colorcolumn')
 "    highlight ColorColumn ctermbg=gray
 "    set colorcolumn=80      " visually indicate column 80 if ver >= 7.3
 
-" Shortcuts & rebinds
+" Syntax highlighting settings for obscure file types
+autocmd BufNewFile,BufRead *.cmp set filetype=mason
+autocmd BufNewFile,BufRead *.xmp set filetype=mason
+autocmd BufNewFile,BufRead *.bml set filetype=mason
+
+" Mappings & Rebinds
 " --allows saving with W when you inevitably forgot to run vim with sudo
 command W w !sudo tee >/dev/null %
 " --allows use of ; as : to save a shift press in command mode
@@ -78,3 +88,10 @@ map <F10> :set relativenumber!<CR>
 " ------------------------
 " F12 --------------------
 " ------------------------
+
+" Plugin settings ------------------------------------------------------------- 
+" --github.com/airblade/vim-gitgutter
+"
+" --github.com/scrooloose/nerdcommenter
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'

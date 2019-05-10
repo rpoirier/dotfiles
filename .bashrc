@@ -5,8 +5,12 @@ force_color_prompt=yes
 source .bashrc_local
 
 # construct prompt script 1
-source ~/.git-prompt.sh
-branch='\[\033[0;33m\]$(__git_ps1 "(%s) \r\f")'; # orange
+if [[ "$OSTYPE" != "darwin16"* ]]; then # This doesn't work on MacOS
+    source ~/.git-prompt.sh
+    branch='\[\033[0;33m\]$(__git_ps1 "(%s) \r\f")'; # orange
+else
+    branch=''
+fi
 user="\[\033[1;35m\]\u"; # light magenta
 host="\[\033[0;34m\]\h"; # blue
 working="\[\033[0;32m\]\w"; # green
